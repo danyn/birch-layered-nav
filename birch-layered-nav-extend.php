@@ -83,7 +83,7 @@
 		//pass an array so that more than on category can be chosen
 		$category = explode(" ", $category);
 		
-		//show only if the category matches needs to be a list though or an array so matches in array. currently 1 str
+		//show only if any category matches 
 		if(!is_product_category( $category )){
 				return;
 		}
