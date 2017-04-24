@@ -31,7 +31,7 @@
 			
 			'category' => array(
 			'type'    => 'text',
-			'std'     =>__('Enter a space separted list of Woo category slugs','woocommerce'),
+			'std'     =>__('Enter a comma separted list of Woo category slugs','woocommerce'),
 			'label'   => __( 'Show on these WooCommerce product categories exclusively', 'woocommerce' )
 			
 			),
@@ -81,14 +81,12 @@
 //		add a handle for category
 		$category = isset( $instance['category'] ) ? $instance['category'] : $this->settings['category']['std'];
 		//pass an array so that more than on category can be chosen
-		$category = explode(" ", $category);
+		$category = explode(",", $category);
 		
-		//show only if any category matches 
+		//show only if any category matches takes single arg or array in this case its array even if single
 		if(!is_product_category( $category )){
 				return;
-		}
-		
-		
+		}	
 		
 		if ( ! taxonomy_exists( $taxonomy ) ) {
 			return;
