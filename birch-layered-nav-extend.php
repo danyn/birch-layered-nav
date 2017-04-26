@@ -79,15 +79,15 @@
 		$query_type         = isset( $instance['query_type'] ) ? $instance['query_type'] : $this->settings['query_type']['std'];
 		$display_type       = isset( $instance['display_type'] ) ? $instance['display_type'] : $this->settings['display_type']['std'];
 //		add a handle for category
-		$category = isset( $instance['category'] ) ? $instance['category'] : $this->settings['category']['std'];
+		$categories = isset( $instance['category'] ) ? $instance['category'] : $this->settings['category']['std'];
 		//pass an array so that more than on category can be chosen
-		$category = explode(",", $category);
+		$categories = explode(",", $categories);
 		
-		//show only if any category matches takes single arg or array in this case its array even if single
-		if(!is_product_category( $category )){
+		// When the product category page being viewed does not exist in $categories.
+		if(!is_product_category( $categories )){
 				return;
 		}	
-		
+
 		if ( ! taxonomy_exists( $taxonomy ) ) {
 			return;
 		}
